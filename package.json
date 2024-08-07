@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.1.6",
+    "@google/generative-ai": "^0.16.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@toast-ui/react-editor": "^3.2.3",
     "class-variance-authority": "^0.7.0",
