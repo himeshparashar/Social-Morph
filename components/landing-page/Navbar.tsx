@@ -71,7 +71,7 @@ const Navbar = () => {
           </div>
         </div>
         <div>
-          <button className="text-lg bg-gradient-to-r from-slate-600 to-slate-800 text-white px-3 py-1 rounded-lg hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg hover:shadow-purple-400 shadow-md shadow-gray-500">
+          <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
             Get Started
           </button>
         </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
       <div
         className={`${
           !showFeatures && "hidden"
-        } w-fit bg-white py-5 px-6 rounded-xl shadow-xl absolute shadow-purple-300 ml-56 -mt-2`}
+        } w-fit bg-white py-5 px-6 rounded-xl shadow-xl absolute shadow-purple-300 ml-56 -mt-4`}
       >
         <ul>
           <li>Generate</li>
