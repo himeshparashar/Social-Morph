@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import HeroContent from "./HeroContent";
 
 const Hero = () => {
   return (
@@ -8,6 +9,7 @@ const Hero = () => {
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"></div>
       </div>
       <Navbar />
+      <HeroContent />
     </div>
   );
 };

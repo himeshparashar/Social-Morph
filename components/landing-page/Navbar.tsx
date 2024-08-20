@@ -79,7 +79,7 @@ const Navbar = () => {
       <div
         className={`${
           !showFeatures && "hidden"
-        } w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 ml-56 -mt-2`}
+        } w-fit bg-white py-5 px-6 rounded-xl shadow-xl absolute shadow-purple-300 ml-56 -mt-2`}
       >
         <ul>
           <li>Generate</li>
