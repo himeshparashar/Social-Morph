@@ -1,4 +1,5 @@
 import Hero from "@/components/landing-page/Hero";
+import Infocards from "@/components/landing-page/Infocards";
 import VideoSection from "@/components/landing-page/VideoSection";
 import React from "react";
 
@@ -10,6 +11,7 @@ const page = () => {
       </div>
       <Hero />
       <VideoSection />
+      <Infocards />
     </div>
   );
 };
