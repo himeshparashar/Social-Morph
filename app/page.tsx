@@ -1,5 +1,6 @@
 import Hero from "@/components/landing-page/Hero";
 import Infocards from "@/components/landing-page/Infocards";
+import Testimonials from "@/components/landing-page/Testimonials";
 import VideoSection from "@/components/landing-page/VideoSection";
 import React from "react";
 
@@ -12,6 +13,7 @@ const page = () => {
       <Hero />
       <VideoSection />
       <Infocards />
+      <Testimonials />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa";
 
 const Infocards = () => {
   return (
-    <div className="w-[90%] mx-auto mt-36">
+    <div className="w-[90%] mx-auto mt-36 mb-24">
       <div className="flex justify-between items-center">
         <div className="w-1/2 bg-gradient-to-r from-purple-50 to-purple-200 shadow-lg shadow-purple-400 rounded-2xl">
           <div className="px-10 py-7">

@@ -2,7 +2,7 @@ import React from "react";
 
 const HeroContent = () => {
   return (
-    <div className="w-3/5 mx-auto">
+    <div className="w-[62%] mx-auto">
       <div className="text-8xl  text-center tracking-wide leading-tight mt-24 font-semibold">
         <h1 className="gradient-text">
           30 days of content in{" "}

@@ -88,3 +88,19 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.slick-dots {
+  position: static !important; 
+  margin-top: 20px;
+}
+
+.slick-slide >div{
+  margin: 0 20px;
+}
+.slick-prev:before{
+  color: #2f0958 !important;
+}
+
+.slick-next:before{
+  color: #2f0958 !important;
+}
