@@ -1,3 +1,5 @@
+import Accordion from "@/components/landing-page/Accordion";
+import Footer from "@/components/landing-page/Footer";
 import Hero from "@/components/landing-page/Hero";
 import Infocards from "@/components/landing-page/Infocards";
 import Testimonials from "@/components/landing-page/Testimonials";
@@ -14,6 +16,8 @@ const page = () => {
       <VideoSection />
       <Infocards />
       <Testimonials />
+      <Accordion />
+      <Footer />
     </div>
   );
 };
