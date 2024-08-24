@@ -21,7 +21,7 @@ const Accordion = () => {
     <div className="py-20">
       <div className="flex flex-col items-center">
         <h1 className="text-6xl gradient-text">Frequently Asked Questions</h1>
-        <p className="text-2xl text-gray-600 font-light mt-3 leading-snug w-1/3 text-center">
+        <p className="text-2xl text-gray-600 font-light my-5 leading-snug w-1/3 text-center">
           Find answers to commonly asked questions about our product and
           services
         </p>
