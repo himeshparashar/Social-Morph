@@ -29,17 +29,20 @@ const Accordion = () => {
       <div className="right mb-36 w-2/3 mx-auto select-none space-y-10">
         {faq.map((faq, i) => (
           <div key={i}>
-            <div className="bg-gradient-to-r from-purple-100 shadow-lg shadow-purple-300 p-4 mx-3 md:p-7 md:m-5 rounded-xl cursor-pointer">
+            <div className="bg-gradient-to-r from-purple-100 shadow-lg shadow-purple-300 p-4 mx-3 md:p-7 md:m-5 rounded-xl">
               <div className="flex justify-between">
                 <h1 className="md:text-2xl text-lg dm-sans-font w-[87%]">
                   {faq.question}
                 </h1>
 
                 {show ? (
-                  <IoIosArrowUp className="text-2xl" onClick={closeAccordion} />
+                  <IoIosArrowUp
+                    className="text-2xl cursor-pointer"
+                    onClick={closeAccordion}
+                  />
                 ) : (
                   <IoIosArrowDown
-                    className="text-2xl"
+                    className="text-2xl cursor-pointer"
                     onClick={() => handleAccordion(i)}
                   />
                 )}
