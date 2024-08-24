@@ -24,15 +24,15 @@ const Navbar = () => {
               ></path>
               <path
                 fill="#FFD43E"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M54.79 9.665a33 33 0 0 1 9.616 21.525 11.867 11.867 0 0 0-6.561-3.9 27 27 0 0 0-50.1-7.205H1.086A33 33 0 0 1 54.79 9.665ZM8.828 30.15Zm7.587-3.122a12.704 12.704 0 0 0 0 0Zm9.986 4.415Zm8.685-4.377a12.784 12.784 0 0 0 0 0Zm10.481 4.719Zm8.911-4.75a12.653 12.653 0 0 0 0 0Z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
               <path
                 fill="#EE8E1D"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M50.547 13.908a27.001 27.001 0 0 1 7.298 13.382c-.842-.18-1.72-.276-2.622-.276-1.22 0-2.394.174-3.497.499a20.999 20.999 0 0 0-40.81 1.108 11.8 11.8 0 0 0-2.088 1.529V20.085H7.744a27 27 0 0 1 42.803-6.177ZM26.401 31.443c-1.761-2.194-4.323-3.746-7.284-4.252 2.96.506 5.523 2.058 7.284 4.252Z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
               <path
                 fill="#971C1C"
@@ -40,9 +40,9 @@ const Navbar = () => {
               ></path>
               <path
                 fill="#D62727"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M51.725 27.513a11.85 11.85 0 0 0-5.42 3.375 15 15 0 0 0-28.612-3.856 12.716 12.716 0 0 0-.684-.018c-2.237 0-4.317.586-6.093 1.607a21 21 0 0 1 40.81-1.108Z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
           </div>
@@ -71,7 +71,7 @@ const Navbar = () => {
           </div>
         </div>
         <div>
-          <button className="text-lg bg-gradient-to-r from-slate-600 to-slate-800 text-white px-3 py-1 rounded-lg hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg hover:shadow-purple-400 shadow-md shadow-gray-500">
+          <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
             Get Started
           </button>
         </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
       <div
         className={`${
           !showFeatures && "hidden"
-        } w-fit bg-white py-5 px-6 rounded-xl shadow-xl absolute shadow-purple-300 ml-56 -mt-2`}
+        } w-fit bg-white py-5 px-6 rounded-xl shadow-xl absolute shadow-purple-300 ml-56 -mt-4`}
       >
         <ul>
           <li>Generate</li>
