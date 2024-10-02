@@ -63,7 +63,7 @@ const Footer = () => {
           {/* Column 2 */}
           <div className="flex flex-col gap-4 justify-center items-center">
             <h2 className="text-3xl font-semibold">Quick Links</h2>
-            <ul className="space-y-2 text-xl">
+            <ul className="md:space-y-2 text-xl max-md:flex justify-center items-center space-x-4">
               <li>
                 <a href="#" className="hover:underline">
                   Features
@@ -89,7 +89,7 @@ const Footer = () => {
 
           {/* Column 3 */}
           <div className="flex flex-col gap-4 text-center">
-            <h2 className="text-xl font-semibold">Get Started</h2>
+            <h2 className="text-3xl font-semibold">Get Started</h2>
             <p className="text-lg">
               Try Marky now and generate 30 posts for free. Pay later to unlock
               additional features.
