@@ -1,3 +1,4 @@
+"use client";
 const VideoSection = () => {
   return (
     <div>
@@ -5,7 +6,13 @@ const VideoSection = () => {
         The fastest way to make social media content
       </h1>
       <div className="h-[70%] w-[70%] mx-auto my-10 ">
-        <video autoPlay loop muted src="https://minvo.pro/assets/videos/landingPage/social-demo.mp4" className="rounded-3xl shadow-xl shadow-purple-500"></video>
+        <video
+          autoPlay
+          loop
+          muted
+          src="https://minvo.pro/assets/videos/landingPage/social-demo.mp4"
+          className="rounded-3xl shadow-xl shadow-purple-500"
+        ></video>
       </div>
     </div>
   );
