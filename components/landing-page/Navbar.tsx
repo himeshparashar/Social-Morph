@@ -2,15 +2,21 @@
 import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
+import { CiMenuBurger } from "react-icons/ci";
+import { RxCross1 } from "react-icons/rx";
 
 const Navbar = () => {
   const [showFeatures, setShowFeatures] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleNavbar = () => setIsOpen(!isOpen)
+
   return (
     <div>
-      <div className="flex justify-between items-center mx-28 mt-5">
-        <div className="flex items-center gap-14">
+      <div className="mx-28 mt-5">
+        <div className="flex justify-between items-center gap-14">
           {/* LOGO */}
-          <div>
+          <div className="z-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="71"
@@ -46,40 +52,80 @@ const Navbar = () => {
               ></path>
             </svg>
           </div>
-          <div className="flex gap-12 text-lg">
-            <div className="cursor-pointer ">
-              <div
-                className="flex items-center gap-1"
-                onMouseOver={() => setShowFeatures(true)}
-                onMouseLeave={() => setShowFeatures(false)}
-              >
-                Features{" "}
-                {!showFeatures ? (
-                  <IoMdArrowDropdown className="text-xl" />
-                ) : (
-                  <IoMdArrowDropup className="text-xl" />
-                )}
+
+          <div className="max-md:hidden">
+            <div className="flex gap-12 text-lg">
+              <div className="cursor-pointer ">
+                <div
+                  className="flex items-center gap-1"
+                  onMouseOver={() => setShowFeatures(true)}
+                  onMouseLeave={() => setShowFeatures(false)}
+                >
+                  Features{" "}
+                  {!showFeatures ? (
+                    <IoMdArrowDropdown className="text-xl" />
+                  ) : (
+                    <IoMdArrowDropup className="text-xl" />
+                  )}
+                </div>
+                <div className="hidden">
+                  <div className="cursor-pointer">Generate</div>
+                  <div className="cursor-pointer">Schedule</div>
+                  <div className="cursor-pointer">Design</div>
+                </div>
               </div>
-              <div className="hidden">
-                <div className="cursor-pointer">Generate</div>
-                <div className="cursor-pointer">Schedule</div>
-                <div className="cursor-pointer">Design</div>
+              <h1 className="cursor-pointer">Pricing</h1>
+              <h1 className="cursor-pointer ml-2">Blog</h1>
+            </div>
+          </div>
+          <div className="max-md:hidden">
+            <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
+              Get Started
+            </button>
+          </div>
+
+          <div className="md:hidden z-50">
+            <button className="text-3xl" onClick={toggleNavbar}>
+              {(isOpen) ? <RxCross1 /> : <CiMenuBurger />}
+            </button>
+          </div>
+
+          {isOpen &&
+            <div className="fixed inset-0 flex flex-col justify-center items-center space-y-8 h-[60dvh] bg-purple-200/95">
+              <div className="text-2xl flex flex-col justify-center items-center space-y-6">
+                <div className="cursor-pointer">
+                  <div
+                    className="flex items-center gap-1"
+                    onMouseOver={() => setShowFeatures(true)}
+                    onMouseLeave={() => setShowFeatures(false)}
+                  >
+                    Features{" "}
+                    {!showFeatures ? (
+                      <IoMdArrowDropdown className="text-xl" />
+                    ) : (
+                      <IoMdArrowDropup className="text-xl" />
+                    )}
+                  </div>
+                  <div className="hidden">
+                    <div className="cursor-pointer">Generate</div>
+                    <div className="cursor-pointer">Schedule</div>
+                    <div className="cursor-pointer">Design</div>
+                  </div>
+                </div>
+                <h1 className="cursor-pointer">Pricing</h1>
+                <h1 className="cursor-pointer ml-2">Blog</h1>
+                <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
+                  Get Started
+                </button>
               </div>
             </div>
-            <h1 className="cursor-pointer">Pricing</h1>
-            <h1 className="cursor-pointer ml-2">Blog</h1>
-          </div>
-        </div>
-        <div>
-          <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
-            Get Started
-          </button>
+          }
         </div>
       </div>
+
       <div
-        className={`${
-          !showFeatures && "hidden"
-        } w-fit bg-white py-5 px-6 rounded-xl shadow-xl absolute shadow-purple-300 ml-56 -mt-4`}
+        className={`${!showFeatures && "hidden"
+          } w-fit bg-white py-5 px-6 rounded-xl shadow-xl absolute shadow-purple-300 ml-56 -mt-4`}
       >
         <ul>
           <li>Generate</li>

@@ -20,8 +20,8 @@ const Accordion = () => {
   return (
     <div className="py-20">
       <div className="flex flex-col items-center">
-        <h1 className="text-6xl gradient-text">Frequently Asked Questions</h1>
-        <p className="text-2xl text-gray-600 font-light my-5 leading-snug w-1/3 text-center">
+        <h1 className="text-3xl md:text-6xl gradient-text">Frequently Asked Questions</h1>
+        <p className="text-xl md:text-2xl text-gray-600 font-light my-5 leading-snug md:w-1/3 text-center">
           Find answers to commonly asked questions about our product and
           services
         </p>
