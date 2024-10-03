@@ -1,0 +1,21 @@
+services:
+  mongoDB:
+    image: mongo
+    container_name: Social_Morph_MongoDB
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+  
+  nextapp:
+    image: nextapp
+    container_name: Social_Morph_Nextapp
+    depends_on:
+      - mongoDB
+    ports:
+      - "3000:3000"
+    environment:
+      MONGODB_URI: "mongodb://mongodb:27017"
+
+volumes:
+  mongodb_data:
