@@ -1,21 +1,26 @@
 services:
-  mongoDB:
-    image: mongo
-    container_name: Social_Morph_MongoDB
+  postgresDb:
+    image: postgres:bullseye
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: Social_Morph
     ports:
-      - "27017:27017"
+      - 5432:5432
     volumes:
-      - mongodb_data:/data/db
+      - postgres-data:/var/lib/postgresql/data
   
   nextapp:
     image: nextapp
     container_name: Social_Morph_Nextapp
     depends_on:
-      - mongoDB
+      - postgresDb
     ports:
       - "3000:3000"
     environment:
-      MONGODB_URI: "mongodb://mongodb:27017"
+      DATABASE_URL: postgresql://postgres:postgres@postgresDb:5432/Social_Morph
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
 volumes:
-  mongodb_data:
+  postgres-data:
