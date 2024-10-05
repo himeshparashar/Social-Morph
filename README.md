@@ -13,6 +13,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/himeshparashar/Social-Morph?style=for-the-badge)
 ![GitHub stars](https://img.shields.io/github/stars/himeshparashar/Social-Morph?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/himeshparashar/Social-Morph?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/himeshparashar/Social-Morph?style=for-the-badge)
 
 
 ## ✨ Features
