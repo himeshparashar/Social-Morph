@@ -1,0 +1,26 @@
+services:
+  postgresDb:
+    image: postgres:bullseye
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: Social_Morph
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  
+  nextapp:
+    image: nextapp
+    container_name: Social_Morph_Nextapp
+    depends_on:
+      - postgresDb
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgresDb:5432/Social_Morph
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
