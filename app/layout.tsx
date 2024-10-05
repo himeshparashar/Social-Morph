@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   title: "Social Morph",
   description: "AI-powered social media marketing with GPT-4",
   keywords: "social media, marketing, AI, GPT-4, automation, social media management",
+  
   openGraph: {
     title: "Social Morph",
     description: "AI-powered social media marketing with GPT-4",
-    url: baseUrl,
     type: "website",
     siteName: "Social Morph",
     images: [
@@ -26,6 +26,15 @@ export const metadata: Metadata = {
       },
     ],
   },
+
+  twitter: {
+    card: "summary_large_image",
+    site: "@Social_Morph", 
+    title: "Social Morph",
+    description: "AI-powered social media marketing with GPT-4",
+    images: `${baseUrl}/og-image.jpg`,
+  },
+
   robots: {
     index: true,
     follow: true,
@@ -46,10 +55,23 @@ export default function RootLayout({
           <meta name="description" content="AI-powered social media marketing with GPT-4" />
           <meta name="keywords" content="social media, marketing, AI, GPT-4, automation, social media management" />
           <meta name="robots" content="index, follow" />
+
+          {/* Open Graph metadata */}
           <meta property="og:title" content="Social Morph" />
           <meta property="og:description" content="AI-powered social media marketing with GPT-4" />
           <meta property="og:url" content={baseUrl} />
           <meta property="og:image" content={`${baseUrl}/og-image.jpg`} />
+
+          {/* Twitter metadata */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@YourTwitterHandle" />
+          <meta name="twitter:title" content="Social Morph" />
+          <meta name="twitter:description" content="AI-powered social media marketing with GPT-4" />
+          <meta name="twitter:image" content={`${baseUrl}/og-image.jpg`} />
+
+          {/* Facebook metadata */}
+          <meta property="fb:app_id" content="123456789" />
+
           <title>Social Morph</title>
         </head>
         <body className={inter.className}>{children}</body>
