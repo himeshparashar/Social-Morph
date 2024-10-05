@@ -16,6 +16,9 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/himeshparashar/Social-Morph?style=for-the-badge)
 
 
+![WhatsApp Image 2024-10-05 at 18 47 54_f3912aff](https://github.com/user-attachments/assets/51a50a7e-7324-4a11-91c2-d94440ebdacb)
+
+
 ## ✨ Features
 
 - 🤖 **AI-Powered Content Creation**: Generate high-quality social media content using the Gemini API.
