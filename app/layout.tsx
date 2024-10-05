@@ -9,12 +9,12 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://socialmorph-himeshp
 
 export const metadata: Metadata = {
   title: "Social Morph",
-  description: "AI-powered social media marketing with GPT-4",
-  keywords: "social media, marketing, AI, GPT-4, automation, social media management",
+  description: "AI-powered social media marketing with Gemini API",
+  keywords: "social media, marketing, AI, Gemini, automation, social media management",
   
   openGraph: {
     title: "Social Morph",
-    description: "AI-powered social media marketing with GPT-4",
+    description: "AI-powered social media marketing with Gemini API",
     type: "website",
     siteName: "Social Morph",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@Social_Morph", 
     title: "Social Morph",
-    description: "AI-powered social media marketing with GPT-4",
+    description: "AI-powered social media marketing with Gemini API",
     images: `${baseUrl}/og-image.jpg`,
   },
 
@@ -52,21 +52,21 @@ export default function RootLayout({
         <head>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="description" content="AI-powered social media marketing with GPT-4" />
-          <meta name="keywords" content="social media, marketing, AI, GPT-4, automation, social media management" />
+          <meta name="description" content="AI-powered social media marketing with Gemini API" />
+          <meta name="keywords" content="social media, marketing, AI, Gemini, automation, social media management" />
           <meta name="robots" content="index, follow" />
 
           {/* Open Graph metadata */}
           <meta property="og:title" content="Social Morph" />
-          <meta property="og:description" content="AI-powered social media marketing with GPT-4" />
+          <meta property="og:description" content="AI-powered social media marketing with Gemini API" />
           <meta property="og:url" content={baseUrl} />
           <meta property="og:image" content={`${baseUrl}/og-image.jpg`} />
 
           {/* Twitter metadata */}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@YourTwitterHandle" />
+          <meta name="twitter:site" content="@Social_Morph" />
           <meta name="twitter:title" content="Social Morph" />
-          <meta name="twitter:description" content="AI-powered social media marketing with GPT-4" />
+          <meta name="twitter:description" content="AI-powered social media marketing with Gemini API" />
           <meta name="twitter:image" content={`${baseUrl}/og-image.jpg`} />
 
           {/* Facebook metadata */}
