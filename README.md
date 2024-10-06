@@ -1,40 +1,57 @@
-# Social Morph - AI Social Media Content Generator
+# 🌟 Social Morph - AI Social Media Content Generator
 
-Save time and money with **Social Morph**, the ultimate AI social media marketing tool. Grow your social media presence with on-brand messaging and creatives that get results. **Social Morph** leverages advanced AI and the Gemini API to automate content creation, helping you post engaging content consistently across all your social media platforms.
+<div align="center"> 
+<img  src="https://readme-typing-svg.herokuapp.com?color=45ffaa&center=true&vCenter=true&size=40&width=900&height=80&lines=Welcome+to+Social+Morph!"/>
+</div>
 
-## Features
+**Social Morph** is a powerful AI-driven social media content creation tool that helps you streamline your marketing efforts. Whether you're managing multiple platforms or trying to maintain consistent branding, Social Morph has you covered with AI-generated posts that resonate with your audience.
 
-- **AI-Powered Content Generation**: Create engaging, on-brand posts automatically with the help of the Gemini API.
-- **Post Across Platforms**: Social Morph generates and posts content across various social media platforms daily, saving you time and effort.
-- **Consistent Branding**: Ensure consistent messaging and visuals that align with your brand's identity.
-- **10x Your Social Media**: Increase your brand visibility and engagement with AI-generated posts.
-- **Unlimited Post Generation**: Generate unlimited posts and never run out of fresh content.
+## 📊 Stat Board
 
-## Tech Stack
+![GitHub repo size](https://img.shields.io/github/repo-size/himeshparashar/Social-Morph?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/himeshparashar/Social-Morph?style=for-the-badge)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/himeshparashar/Social-Morph?style=for-the-badge)
+![GitHub stars](https://img.shields.io/github/stars/himeshparashar/Social-Morph?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/himeshparashar/Social-Morph?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/himeshparashar/Social-Morph?style=for-the-badge)
 
-- **Next.js**: Frontend framework for building the application.
-- **Gemini API**: AI-powered content generation API used to create social media posts.
-- **MongoDB**: Database used to store user data, generated posts, and scheduling information.
-- **Docker**: Used to containerize and deploy the application.
-  
-## Getting Started
 
-Follow these instructions to get a copy of the project up and running locally.
+![WhatsApp Image 2024-10-05 at 18 47 54_f3912aff](https://github.com/user-attachments/assets/51a50a7e-7324-4a11-91c2-d94440ebdacb)
 
-### Prerequisites
+
+## ✨ Features
+
+- 🤖 **AI-Powered Content Creation**: Generate high-quality social media content using the Gemini API.
+- 📅 **Multi-Platform Posting**: Automatically publish across multiple social media platforms with one click.
+- 🎨 **Consistent Branding**: Ensure all content aligns with your brand guidelines for a cohesive online presence.
+- 🚀 **Boost Engagement**: Increase reach and engagement with dynamic, AI-optimized posts.
+- 💡 **Unlimited Content**: Generate as much content as you need without limits.
+
+## 💻 Tech Stack
+
+- ⚛️ **Next.js**: Frontend framework for building the application.
+- 🔮 **Gemini API**: AI-powered content generation API used to create social media posts.
+- 🗄️ **MongoDB**: Database used to store user data, generated posts, and scheduling information.
+- 🐳 **Docker**: Used to containerize and deploy the application.
+
+## 🚀 Getting Started
+
+Follow these instructions to set up and run the project locally.
+
+### ✅ Prerequisites
 
 Ensure you have the following installed on your machine:
 
-- Node.js (>=14.0.0)
-- npm or yarn
-- Docker (for containerization)
+- 🟢 Node.js (>=14.0.0)
+- 📦 npm or yarn
+- 🐳 Docker (for containerization)
 
-### Installation
+### ⚙️ Installation
 
 1. **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-username/social-morph.git](https://github.com/himeshparashar/Social-Morph)
+    git clone https://github.com/himeshparashar/Social-Morph
     cd social-morph
     ```
 
@@ -69,7 +86,7 @@ Ensure you have the following installed on your machine:
 
     The app will be running at `http://localhost:3000`.
 
-### Docker Setup
+### 🐳 Docker Setup
 
 To run the application using Docker:
 
@@ -83,14 +100,14 @@ To run the application using Docker:
 
     Open your browser and go to `http://localhost:3000`.
 
-## Usage
+## 📖 Usage
 
 1. **Create an Account**: Sign up and connect your social media platforms.
 2. **Generate Content**: Use the AI content generator powered by the Gemini API to create posts tailored to your brand.
 3. **Schedule & Post**: Automate posting across all your social media platforms with the built-in scheduler.
 4. **Analytics**: View engagement statistics and optimize your social media strategy.
 
-## Project Structure
+## 🗂️ Project Structure
 
 - `/pages`: Contains the main pages of the application (e.g., login, dashboard).
 - `/components`: Reusable UI components.
@@ -98,20 +115,20 @@ To run the application using Docker:
 - `/api`: Next.js API routes for server-side logic.
 - `/styles`: Global and component-specific styles.
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please submit a pull request or open an issue to discuss improvements or report bugs.
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-## Contact
+## 📬 Contact
 
 For any questions or inquiries, feel free to reach out:
 
-- **Email**: himeshparashar424@gmail.com
-- **Website**: [www.socialmorph.co](https://www.socialmorph.co)
+- 📧 **Email**: himeshparashar424@gmail.com
+- 🌐 **Website**: [www.socialmorph.co](https://www.socialmorph.co)
 
 ---
 
