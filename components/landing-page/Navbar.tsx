@@ -2,15 +2,21 @@
 import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
+import { CiMenuBurger } from "react-icons/ci";
+import { RxCross1 } from "react-icons/rx";
 
 const Navbar = () => {
   const [showFeatures, setShowFeatures] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNavbar = () => setIsOpen(!isOpen);
+
   return (
     <div>
-      <div className="flex justify-between items-center mx-28 mt-5">
-        <div className="flex items-center gap-14">
+      <div className="mx-28 mt-5">
+        <div className="flex justify-between items-center gap-14">
           {/* LOGO */}
-          <div>
+          <div className="z-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="71"
@@ -31,61 +37,92 @@ const Navbar = () => {
               <path
                 fill="#EE8E1D"
                 fillRule="evenodd"
-                d="M50.547 13.908a27.001 27.001 0 0 1 7.298 13.382c-.842-.18-1.72-.276-2.622-.276-1.22 0-2.394.174-3.497.499a20.999 20.999 0 0 0-40.81 1.108 11.8 11.8 0 0 0-2.088 1.529V20.085H7.744a27 27 0 0 1 42.803-6.177ZM26.401 31.443c-1.761-2.194-4.323-3.746-7.284-4.252 2.96.506 5.523 2.058 7.284 4.252Z"
-                clipRule="evenodd"
-              ></path>
-              <path
-                fill="#971C1C"
-                d="M46.306 30.888a15 15 0 0 0-28.613-3.856c3.56.192 6.67 1.873 8.708 4.411 2.172-2.69 5.563-4.396 9.399-4.396 4.11 0 7.642 1.802 9.767 4.738.231-.311.478-.61.739-.897Z"
-              ></path>
-              <path
-                fill="#D62727"
-                fillRule="evenodd"
-                d="M51.725 27.513a11.85 11.85 0 0 0-5.42 3.375 15 15 0 0 0-28.612-3.856 12.716 12.716 0 0 0-.684-.018c-2.237 0-4.317.586-6.093 1.607a21 21 0 0 1 40.81-1.108Z"
+                d="M50.547 13.908a27.001 27.001 0 0 1 7.298 13.382c-.842-.18-1.72-.276-2.622-.276-1.22 0-2.394.174-3.497.499a20.999 20.999 0 0 0-40.81 1.108 11.8 11.8 0 0 0-2.088 1.529V20.085H7.744a27 27 0 0 1 42.803-6.177ZM9.018 28.89Zm7.684-3.187Zm9.96 4.269Zm8.636-4.23Zm10.285 4.571Zm8.832-4.601Z"
                 clipRule="evenodd"
               ></path>
             </svg>
           </div>
-          <div className="flex gap-12 text-lg">
-            <div className="cursor-pointer ">
+
+          <div className="max-md:hidden">
+            <div className="flex gap-12 text-lg">
+              {/* FEATURES DROPDOWN */}
               <div
-                className="flex items-center gap-1"
-                onMouseOver={() => setShowFeatures(true)}
+                className="relative cursor-pointer group"
+                onMouseEnter={() => setShowFeatures(true)}
                 onMouseLeave={() => setShowFeatures(false)}
               >
-                Features{" "}
-                {!showFeatures ? (
-                  <IoMdArrowDropdown className="text-xl" />
-                ) : (
-                  <IoMdArrowDropup className="text-xl" />
+                <div className="flex items-center gap-1 group-hover:text-purple-600">
+                  Features{" "}
+                  {!showFeatures ? (
+                    <IoMdArrowDropdown className="text-xl" />
+                  ) : (
+                    <IoMdArrowDropup className="text-xl" />
+                  )}
+                </div>
+                {/* DROPDOWN MENU */}
+                {showFeatures && (
+                  <div className="absolute top-8 left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-50 transition-all duration-300">
+                    <ul>
+                      <li className="cursor-pointer hover:text-purple-600">Generate</li>
+                      <li className="cursor-pointer my-5 hover:text-purple-600">Schedule</li>
+                      <li className="cursor-pointer hover:text-purple-600">Design</li>
+                    </ul>
+                  </div>
                 )}
               </div>
-              <div className="hidden">
-                <div className="cursor-pointer">Generate</div>
-                <div className="cursor-pointer">Schedule</div>
-                <div className="cursor-pointer">Design</div>
+
+              <h1 className="cursor-pointer hover:text-purple-600">Pricing</h1>
+              <h1 className="cursor-pointer hover:text-purple-600 ml-2">Blog</h1>
+            </div>
+          </div>
+
+          <div className="max-md:hidden">
+            <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
+              Get Started
+            </button>
+          </div>
+
+          <div className="md:hidden z-50">
+            <button className="text-3xl" onClick={toggleNavbar}>
+              {isOpen ? <RxCross1 /> : <CiMenuBurger />}
+            </button>
+          </div>
+
+          {isOpen && (
+            <div className="fixed inset-0 flex flex-col justify-center items-center space-y-8 h-[60dvh] bg-purple-200/95">
+              <div className="text-2xl flex flex-col justify-center items-center space-y-6">
+                <div
+                  className="cursor-pointer"
+                  onMouseEnter={() => setShowFeatures(true)}
+                  onMouseLeave={() => setShowFeatures(false)}
+                >
+                  <div className="flex items-center gap-1">
+                    Features{" "}
+                    {!showFeatures ? (
+                      <IoMdArrowDropdown className="text-xl" />
+                    ) : (
+                      <IoMdArrowDropup className="text-xl" />
+                    )}
+                  </div>
+                  {showFeatures && (
+                    <div className="absolute top-8 left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-50 transition-all duration-300">
+                      <ul>
+                        <li className="cursor-pointer">Generate</li>
+                        <li className="cursor-pointer my-5">Schedule</li>
+                        <li className="cursor-pointer">Design</li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+                <h1 className="cursor-pointer">Pricing</h1>
+                <h1 className="cursor-pointer ml-2">Blog</h1>
+                <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
+                  Get Started
+                </button>
               </div>
             </div>
-            <h1 className="cursor-pointer">Pricing</h1>
-            <h1 className="cursor-pointer ml-2">Blog</h1>
-          </div>
+          )}
         </div>
-        <div>
-          <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
-            Get Started
-          </button>
-        </div>
-      </div>
-      <div
-        className={`${
-          !showFeatures && "hidden"
-        } w-fit bg-white py-5 px-6 rounded-xl shadow-xl absolute shadow-purple-300 ml-56 -mt-4`}
-      >
-        <ul>
-          <li>Generate</li>
-          <li className="my-5">Schedule</li>
-          <li>Design</li>
-        </ul>
       </div>
     </div>
   );

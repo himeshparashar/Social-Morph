@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-purple-400 to-purple-900 text-white py-12">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-y-5">
           {/* Column 1 */}
-          <div className="flex flex-col gap-4 w-1/3">
+          <div className="flex flex-col justify-center items-center gap-4">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ const Footer = () => {
               </svg>
             </div>
 
-            <h1 className="text-3xl font-bold">
+            <h1 className="text-3xl font-bold text-center">
               LinkedIn content creation made easy
             </h1>
             <div className="flex gap-4 text-3xl">
@@ -61,9 +61,9 @@ const Footer = () => {
           </div>
 
           {/* Column 2 */}
-          <div className="flex flex-col gap-4 w-1/3 justify-center items-center">
+          <div className="flex flex-col gap-4 justify-center items-center">
             <h2 className="text-3xl font-semibold">Quick Links</h2>
-            <ul className="space-y-2 text-xl">
+            <ul className="md:space-y-2 text-xl max-md:flex justify-center items-center space-x-4">
               <li>
                 <a href="#" className="hover:underline">
                   Features
@@ -88,8 +88,8 @@ const Footer = () => {
           </div>
 
           {/* Column 3 */}
-          <div className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold">Get Started</h2>
+          <div className="flex flex-col gap-4 text-center">
+            <h2 className="text-3xl font-semibold">Get Started</h2>
             <p className="text-lg">
               Try Marky now and generate 30 posts for free. Pay later to unlock
               additional features.
