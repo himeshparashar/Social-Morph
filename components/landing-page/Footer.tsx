@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -9,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-y-5">
           {/* Column 1 */}
           <div className="flex flex-col justify-center items-center gap-4">
-            <div>
+            {/* <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="71"
@@ -44,6 +45,9 @@ const Footer = () => {
                   clipRule="evenodd"
                 ></path>
               </svg>
+            </div> */}
+            <div className="Z-50 flex items-center justify-center">
+              <Image alt="logo" src={"/log.png"} width={150} height={150} />
             </div>
 
             <h1 className="text-3xl font-bold text-center">

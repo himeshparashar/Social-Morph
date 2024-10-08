@@ -4,6 +4,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 import { CiMenuBurger } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
+import Image from "next/image";
 
 const Navbar = () => {
   const [showFeatures, setShowFeatures] = useState(false);
@@ -13,10 +14,10 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="mx-28 mt-5">
+      <div className="mx-24 mt-5">
         <div className="flex justify-between items-center gap-14">
           {/* LOGO */}
-          <div className="z-50">
+          {/* <div className="z-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="71"
@@ -41,6 +42,10 @@ const Navbar = () => {
                 clipRule="evenodd"
               ></path>
             </svg>
+          </div> */}
+          <div className="Z-50 flex items-center justify-center">
+            <Image alt="logo" src={"/log.png"} width={150} height={150}/>
+
           </div>
 
           <div className="max-md:hidden">

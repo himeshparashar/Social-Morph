@@ -11,7 +11,9 @@ services:
       - postgres-data:/var/lib/postgresql/data
   
   nextapp:
-    image: nextapp
+    # image: nextapp
+    build: 
+      context: .
     container_name: Social_Morph_Nextapp
     depends_on:
       - postgresDb
