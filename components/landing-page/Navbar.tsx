@@ -18,7 +18,7 @@ const Navbar = () => {
           {/* LOGO */}
           <div className="z-50">
             {/* Changed from SVG to an image i created */}
-            <img src="NewLogo.png" alt="Logo" width="150" height="" />
+            <img src="latestLogo.png" alt="Logo" width="300" height="" />
           </div>
 
           <div className="max-md:hidden">
