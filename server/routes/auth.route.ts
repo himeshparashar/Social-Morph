@@ -1,18 +1,16 @@
-import express, { Router } from "express";
+import express from "express";
+const authRouter = express.Router();
+import { authorizeRoles, isAuthenticated } from "../middleware/middleware";
+
 import {
-  login,
-  register,
-  verifyEmail,
-  forgotPassword,
-  verifyResetToken,
+  activateAccount,
+  loginUser,
+  logoutUser,
+  registerUser,
 } from "../controllers/auth.controller";
+authRouter.post("/register", registerUser);
+authRouter.post("/activateAccount", activateAccount);
+authRouter.post("/login", loginUser);
+authRouter.post("/logout", isAuthenticated, logoutUser);
 
-const router: Router = express.Router();
-
-router.post("/login", login);
-router.post("/register", register);
-router.get("/verify-email/:id", verifyEmail);
-router.get("/forgot-password", forgotPassword);
-router.post("/reset-password", verifyResetToken);
-
-export default router;
+export default authRouter;

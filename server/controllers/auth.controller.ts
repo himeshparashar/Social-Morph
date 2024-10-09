@@ -3,12 +3,15 @@ import ErrorHandler from "../utils/ErrorHandler";
 import { CatchAsyncError } from "../middleware/catchAsyncErrors";
 import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 import ejs from "ejs";
+import bcrypt from "bcryptjs";
 import path from "path";
 import sendEmail from "../utils/sendMail";
 import cloudinary from "cloudinary";
-import { sendToken } from "../config/jwt";
-
-import { redis } from "../config/redis";
+import { sendToken } from "../utils/jwt";
+import { redis } from "../utils/redis";
+import { IUser } from "../interfaces/userInterface";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 require("dotenv").config();
 //register
 interface IRegistrationBody {
@@ -17,11 +20,14 @@ interface IRegistrationBody {
   password: string;
   avatar?: string;
 }
+
 export const registerUser = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { username, email, password } = req.body;
-      const existEmail = await userModel.findOne({ email });
+      const existEmail = await prisma.user.findUnique({
+        where: { email },
+      });
       console.log("existEmail:", existEmail);
       if (existEmail) {
         return next(new ErrorHandler("Email already exists", 400));
@@ -95,14 +101,18 @@ export const activateAccount = CatchAsyncError(
         return next(new ErrorHandler("Invalid activation code", 400));
       }
       const { username, email, password } = newUser.user;
-      const userExists = await userModel.findOne({ email });
+
+      const name = username;
+      const userExists = await prisma.user.findUnique({
+        where: { email },
+      });
       if (userExists) {
         return next(new ErrorHandler("Email already exists", 400));
       } else {
-        const user = await userModel.create({
-          username,
-          email,
-          password,
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(password, salt);
+        const user = await prisma.user.create({
+          data: { name, email, password: hash },
         });
       }
       res.status(201).json({
@@ -115,7 +125,7 @@ export const activateAccount = CatchAsyncError(
   }
 );
 
-// user logins
+// user login
 interface IloginRequest {
   email: string;
   password: string;
@@ -123,20 +133,39 @@ interface IloginRequest {
 export const loginUser = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { email, password } = req.body as IloginRequest;
+      const { email, password } = req.body as IloginRequest; // Assuming you have an interface for the request body
       console.log(email, password);
+
+      // Check for missing fields
       if (!email || !password) {
         return next(new ErrorHandler("Please enter email and password", 400));
       }
-      const user = await userModel.findOne({ email }).select("+password");
+
+      // Find user by email and include password
+      const user = await prisma.user.findUnique({
+        where: { email },
+        select: {
+          // Select specific fields
+          id: true,
+          email: true,
+          password: true,
+        },
+      });
+      console.log(user);
+
+      // Check if user exists
       if (!user) {
         return next(new ErrorHandler("Invalid email or password", 401));
       }
-      const isPasswordMatched = await user.comparePassword(password);
+
+      // Compare password with the hashed password in the database
+      const isPasswordMatched = await bcrypt.compare(password, user.password);
       if (!isPasswordMatched) {
         return next(new ErrorHandler("Invalid email or password", 401));
       }
-      sendToken(user, 200, res);
+
+      // Send token to the client
+      sendToken(user, 200, res); // You might want to adjust this based on your sendToken implementation
     } catch (error: any) {
       next(new ErrorHandler(error.message, 400));
     }

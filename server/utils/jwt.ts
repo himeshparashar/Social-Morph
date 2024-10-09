@@ -2,6 +2,7 @@ require("dotenv").config();
 import { Response } from "express";
 
 import { redis } from "./redis";
+import { IUser } from "../interfaces/userInterface";
 interface ITokenOptions {
   expiresIn: Date;
   maxAge: number;
@@ -32,11 +33,25 @@ export const refreshTokenOptions: ITokenOptions = {
   httpOnly: true,
   sameSite: "lax",
 };
+import jwt from "jsonwebtoken";
+
+const signAccessToken = (userId: string) => {
+  return jwt.sign({ id: userId }, process.env.ACCESS_TOKEN as string, {
+    expiresIn: "5m",
+  });
+};
+
+const signRefreshToken = (userId: string) => {
+  return jwt.sign({ id: userId }, process.env.REFRESH_TOKEN as string, {
+    expiresIn: "7d",
+  });
+};
+
 export const sendToken = (user: IUser, statusCode: number, res: Response) => {
-  const accessToken = user.signAccessToken();
-  const refreshToken = user.signRefreshToken();
+  const accessToken = signAccessToken(user.id);
+  const refreshToken = signRefreshToken(user.id);
   // upload the login session to redis
-  redis.set(user._id, JSON.stringify(user as any));
+  redis.set(user.id, JSON.stringify(user as any));
 
   // parsing env  vars
 
@@ -44,6 +59,7 @@ export const sendToken = (user: IUser, statusCode: number, res: Response) => {
     accessTokenOptions.secure = true;
     refreshTokenOptions.secure = true;
   }
+
   // set the cookies
   setTimeout(() => {
     res.cookie("accessToken", accessToken, accessTokenOptions);
