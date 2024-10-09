@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import { TESTIMONIALS, TESTIMONIALS_INFO_CONTENT } from "../../utils/constants";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -25,7 +25,6 @@ const Testimonials = () => {
       },
     ],
   };
-  
 
   return (
     <div className="relative pt-28 bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(229,204,255,0.2)_100%)] overflow-hidden">
@@ -36,8 +35,12 @@ const Testimonials = () => {
         <div className="flex mt-12 justify-around w-full">
           {TESTIMONIALS_INFO_CONTENT.map((info, index) => (
             <div key={index} className="border-l-4 border-gray-300 pl-7">
-              <h1 className="text-4xl md:text-8xl purple-gradient">{info.title}</h1>
-              <p className="text-sm md:text-xl gradient-text">{info.description}</p>
+              <h1 className="text-4xl md:text-8xl purple-gradient">
+                {info.title}
+              </h1>
+              <p className="text-sm md:text-xl gradient-text">
+                {info.description}
+              </p>
             </div>
           ))}
         </div>
@@ -47,23 +50,25 @@ const Testimonials = () => {
           {TESTIMONIALS.map((testis, index) => (
             <div
               key={index}
-              className="p-8 mt-16 mb-10 rounded-lg min-h-[430px] md:min-h-[416px] bg-white shadow-lg shadow-purple-300"
+              className="flex flex-col justify-between p-8 mt-16 mb-10 rounded-lg h-[540px] bg-white shadow-lg shadow-purple-300 hover:shadow-lg hover:shadow-purple-500 transition-transform duration-300 ease-in-out transform hover:scale-105"
             >
-              <img
-                src={testis.img}
-                alt="img"
-                className="w-16 h-16 rounded-full object-cover mb-4 mx-auto"
-              />
-              <h1 className="text-xl font-semibold text-center mb-4">
-                {testis.name}
-              </h1>
-              <h1 className="flex gap-1 text-purple-700 justify-center mb-3 -mt-2">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-              </h1>
+              <div className="text-center">
+                <img
+                  src={testis.img}
+                  alt="img"
+                  className="w-16 h-16 rounded-full object-cover mb-4 mx-auto"
+                />
+                <h1 className="text-xl font-semibold text-center mb-4">
+                  {testis.name}
+                </h1>
+                <h1 className="flex gap-1 text-purple-700 justify-center mb-3 -mt-2">
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                </h1>
+              </div>
               <p className="leading-relaxed text-lg">{testis.review}</p>
             </div>
           ))}
