@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://socialmorph-himeshparashars-projects.vercel.app
+
+# Sitemaps
+Sitemap: https://socialmorph-himeshparashars-projects.vercel.app/sitemap.xml
