@@ -1,6 +1,6 @@
 # Code of Conduct 📜
 
-Welcome to **Truth-Tunnel**! To ensure a welcoming and inclusive environment for everyone, we have established the following Code of Conduct. By participating in this project, you agree to adhere to these guidelines.
+Welcome to **Social-Morph**! To ensure a welcoming and inclusive environment for everyone, we have established the following Code of Conduct. By participating in this project, you agree to adhere to these guidelines.
 
 ## Our Commitment 🤝
 
@@ -37,4 +37,4 @@ Participants who engage in unacceptable behavior may be sanctioned or expelled f
 
 This Code of Conduct is based on the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.1.
 
-Thank you for helping us create a positive and inclusive environment for everyone involved in **Truth-Tunnel**!
+Thank you for helping us create a positive and inclusive environment for everyone involved in **Social-Morph**!
