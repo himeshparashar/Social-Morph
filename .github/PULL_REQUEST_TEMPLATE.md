@@ -37,9 +37,17 @@ What type of changes does your code introduce? (Check all that apply)
 
 - Fixes #
 
+## How should this be tested?
+
+<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration -->
+
+- [ ] Test A
+- [ ] Test B
+
 ## 📸 Screenshots (if applicable)
 
 <!-- If your changes include any UI updates, add screenshots here to show the changes. -->
 
----
+## Mandatory Tasks
 
+- [ ] Make sure you have self-reviewed the code. A decent size PR without self-review might be rejected.
