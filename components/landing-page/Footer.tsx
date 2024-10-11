@@ -50,14 +50,17 @@ const Footer = () => {
               LinkedIn content creation made easy
             </h1>
             <div className="flex gap-4 text-3xl">
-              <a href="https://linkedin.com" aria-label="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/himeshparashar/"
+                aria-label="LinkedIn"
+              >
                 <FaLinkedin />
               </a>
-              <a href="https://twitter.com" aria-label="Twitter">
+              <a href="https://x.com/himesh_dev" aria-label="Twitter">
                 <FaTwitter />
               </a>
             </div>
-            <p className="text-lg mt-2">support@gmail.com</p>
+            <p className="text-lg mt-2">himeshparashar424@gmail.com</p>
           </div>
 
           {/* Column 2 */}
@@ -91,8 +94,8 @@ const Footer = () => {
           <div className="flex flex-col gap-4 text-center">
             <h2 className="text-3xl font-semibold">Get Started</h2>
             <p className="text-lg">
-              Try Marky now and generate 30 posts for free. Pay later to unlock
-              additional features.
+              Try Social Morph now and generate 30 posts for free. Pay later to
+              unlock additional features.
             </p>
             <div className="relative w-full md:w-[85%]">
               <input
