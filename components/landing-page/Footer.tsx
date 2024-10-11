@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -45,6 +46,9 @@ const Footer = () => {
                 ></path>
               </svg>
             </div>
+            {/* <div className="Z-50 flex items-center justify-center">
+              <Image alt="logo" src={"/log.png"} width={150} height={150} />
+            </div> */}
 
             <h1 className="text-3xl font-bold text-center">
               LinkedIn content creation made easy

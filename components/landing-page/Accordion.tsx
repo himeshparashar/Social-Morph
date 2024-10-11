@@ -5,16 +5,16 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const Accordion = () => {
   const [showAnswer, setShowAnswer] = useState<number | null>(null);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<number | null>(null);;
 
   const handleAccordion = (index: number) => {
     setShowAnswer(index);
-    setShow(!show);
+    setShow(index);
   };
 
   const closeAccordion = () => {
     setShowAnswer(null);
-    setShow(false);
+    setShow(null);
   };
 
   return (
@@ -35,7 +35,7 @@ const Accordion = () => {
                   {faq.question}
                 </h1>
 
-                {show ? (
+                {show===i ? (
                   <IoIosArrowUp
                     className="text-2xl cursor-pointer"
                     onClick={closeAccordion}
