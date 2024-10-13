@@ -2,6 +2,11 @@
 const nextConfig = {
   images: {
     domains: ["cdn-icons-png.flaticon.com"],
+    remotePatterns: [
+      {
+        hostname: 'img.clerk.com',
+      }
+    ],
   },
 };
 
