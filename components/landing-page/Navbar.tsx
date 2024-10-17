@@ -47,18 +47,26 @@ const Navbar = () => {
                 </div>
                 {/* DROPDOWN MENU */}
                 {showFeatures && (
-                  <div className="absolute top-8 left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-50 transition-all duration-300">
+                  <div className="absolute top-full left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-50 transition-all duration-300">
                     <ul>
-                      <li className="cursor-pointer hover:text-purple-600">Generate</li>
-                      <li className="cursor-pointer my-5 hover:text-purple-600">Schedule</li>
-                      <li className="cursor-pointer hover:text-purple-600">Design</li>
+                      <li className="cursor-pointer hover:text-purple-600">
+                        Generate
+                      </li>
+                      <li className="cursor-pointer my-5 hover:text-purple-600">
+                        Schedule
+                      </li>
+                      <li className="cursor-pointer hover:text-purple-600">
+                        Design
+                      </li>
                     </ul>
                   </div>
                 )}
               </div>
 
               <h1 className="cursor-pointer hover:text-purple-600">Pricing</h1>
-              <h1 className="cursor-pointer hover:text-purple-600 ml-2">Blog</h1>
+              <h1 className="cursor-pointer hover:text-purple-600 ml-2">
+                Blog
+              </h1>
             </div>
           </div>
 
