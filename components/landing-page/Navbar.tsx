@@ -80,7 +80,7 @@ const Navbar = () => {
           </div>
 
           {isOpen && (
-            <div className="fixed inset-0 flex flex-col justify-center items-center space-y-8 h-[60dvh] bg-purple-200/95">
+            <div className="fixed inset-0 flex flex-col justify-center items-center space-y-8 h-[60dvh] bg-purple-200/95 z-40">
               <div className="text-2xl flex flex-col justify-center items-center space-y-6">
                 <div
                   className="cursor-pointer"
@@ -96,7 +96,7 @@ const Navbar = () => {
                     )}
                   </div>
                   {showFeatures && (
-                    <div className="absolute top-8 left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-50 transition-all duration-300">
+                    <div className="absolute top-8 left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-40 transition-all duration-300">
                       <ul>
                         <li className="cursor-pointer">Generate</li>
                         <li className="cursor-pointer my-5">Schedule</li>
