@@ -98,6 +98,9 @@ export default function Component() {
                   </>
                 )}
               </div>
+              <Button className="mt-8 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
+                {plan.name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
+              </Button>
               <ul className="mt-6 space-y-4 flex-1">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center text-gray-700">
@@ -112,9 +115,6 @@ export default function Component() {
                   </li>
                 ))}
               </ul>
-              <Button className="mt-8 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300">
-                {plan.name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
-              </Button>
             </div>
           ))}
         </div>

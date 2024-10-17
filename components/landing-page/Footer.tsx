@@ -54,13 +54,13 @@ const Footer = () => {
               LinkedIn content creation made easy
             </h1>
             <div className="flex gap-4 text-3xl">
-              <a
+              <a  className ="hover:text-blue-400"
                 href="https://www.linkedin.com/in/himeshparashar/"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin />
               </a>
-              <a href="https://x.com/himesh_dev" aria-label="Twitter">
+              <a  className = "hover:text-blue-400" href="https://x.com/himesh_dev" aria-label="Twitter">
                 <FaTwitter />
               </a>
             </div>
@@ -105,7 +105,7 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="Business Website"
-                className="w-full py-3 px-4 rounded-full text-lg shadow-lg border-2 border-purple-100 placeholder-gray-300 focus:border-purple-500 focus:outline-none pr-20"
+                className="w-full py-3 px-4 text-black rounded-full text-lg shadow-lg border-2 border-purple-100 placeholder-gray-300 focus:border-purple-500 focus:outline-none pr-20"
               />
               <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-500 to-purple-900 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out">
                 Get Posts
