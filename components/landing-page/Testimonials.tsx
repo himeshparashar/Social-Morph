@@ -28,7 +28,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="relative pt-28 bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(229,204,255,0.2)_100%)] overflow-hidden">
+    <div className="relative bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(229,204,255,0.2)_100%)] overflow-hidden">
       <div className="relative z-10 container mx-auto px-4">
         <h1 className="text-3xl lg:text-5xl md:w-3/6 ml-20 leading-tight gradient-text">
           Trusted to publish 200k posts across 12k channels

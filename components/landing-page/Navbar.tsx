@@ -15,12 +15,12 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="mx-24 mt-5">
+      <div className="mx-4 mt-5">
         <div className="flex justify-between items-center gap-14">
           {/* LOGO */}
           <div className="z-50">
             {/* Changed from SVG to an image i created */}
-            <img src="latestLogo.png" alt="Logo" width="300" height="" />
+            <img src="latestLogo.png" alt="Logo" width="200" height="" />
           </div>
           {/* <div className="Z-50 flex items-center justify-center">
             <Image alt="logo" src={"/log.png"} width={150} height={150}/>
