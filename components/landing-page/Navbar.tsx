@@ -5,6 +5,7 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { CiMenuBurger } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   const [showFeatures, setShowFeatures] = useState(false);
@@ -60,10 +61,10 @@ const Navbar = () => {
                 )}
               </div>
 
-              <h1 className="cursor-pointer hover:text-purple-600">Pricing</h1>
-              <h1 className="cursor-pointer hover:text-purple-600 ml-2">
-                Blog
-              </h1>
+              <Link href="/pricing">
+                <h1 className="cursor-pointer hover:text-purple-600">Pricing</h1>
+              </Link>
+              <h1 className="cursor-pointer hover:text-purple-600 ml-2">Blog</h1>
             </div>
           </div>
 
