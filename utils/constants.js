@@ -1,15 +1,20 @@
 export const TESTIMONIALS_INFO_CONTENT = [
   {
-    title: "4X",
+    title: 4, // Change from "4X" to just the number
     description: "More Impressions on LinkedIn",
+    suffix: "X",
+    prefix: ""
   },
   {
-    title: "89%",
+    title: 89, // Change from "89%" to just the number
     description: "Traffic increase in 2 months",
+    suffix: "%"
   },
   {
-    title: "$1.2M",
+    title: 1.2, // Change from "$1.2M" to just the number
     description: "Sourced Revenue from LinkedIn",
+    suffix: "M", // Add a suffix for the millions
+    prefix: "$"
   },
 ];
 

@@ -6,7 +6,8 @@ import { CiMenuBurger } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
+        
 const Navbar = () => {
   const [showFeatures, setShowFeatures] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -17,12 +18,12 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="mx-24 mt-5">
+      <div className="mx-4 mt-5">
         <div className="flex justify-between items-center gap-14">
           {/* LOGO */}
           <div className="z-50">
             {/* Changed from SVG to an image i created */}
-            <img src="latestLogo.png" alt="Logo" width="300" height="" />
+            <img src="latestLogo.png" alt="Logo" width="200" height="" />
           </div>
           {/* <div className="Z-50 flex items-center justify-center">
             <Image alt="logo" src={"/log.png"} width={150} height={150}/>
@@ -63,10 +64,10 @@ const Navbar = () => {
                 )}
               </div>
 
-              <h1 className="cursor-pointer hover:text-purple-600">Pricing</h1>
-              <h1 className="cursor-pointer hover:text-purple-600 ml-2">
-                Blog
-              </h1>
+              <Link href="/pricing">
+                <h1 className="cursor-pointer hover:text-purple-600">Pricing</h1>
+              </Link>
+              <h1 className="cursor-pointer hover:text-purple-600 ml-2">Blog</h1>
             </div>
           </div>
 
@@ -86,7 +87,7 @@ const Navbar = () => {
           </div>
 
           {isOpen && (
-            <div className="fixed inset-0 flex flex-col justify-center items-center space-y-8 h-[60dvh] bg-purple-200/95">
+            <div className="fixed inset-0 flex flex-col justify-center items-center space-y-8 h-[60dvh] bg-purple-200/95 z-40">
               <div className="text-2xl flex flex-col justify-center items-center space-y-6">
                 <div
                   className="cursor-pointer"
@@ -102,7 +103,7 @@ const Navbar = () => {
                     )}
                   </div>
                   {showFeatures && (
-                    <div className="absolute top-8 left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-50 transition-all duration-300">
+                    <div className="absolute top-8 left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-40 transition-all duration-300">
                       <ul>
                         <li className="cursor-pointer">Generate</li>
                         <li className="cursor-pointer my-5">Schedule</li>
