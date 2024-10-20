@@ -41,7 +41,7 @@ const Testimonials = () => {
                   start={0}
                   prefix={info.prefix || ""}
                   end={info.title}
-                  duration={10} // Duration for the animation
+                  duration={5} // Duration for the animation
                   suffix={info.suffix || ""}
                   decimals={info.title % 1 !== 0 ? 1 : 0} // Set decimals for values with fractions
                 />
