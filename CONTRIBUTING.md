@@ -4,7 +4,7 @@ Thank you for considering contributing to this project! Here are some guidelines
 
 <br>
 
-## Code of Conduct 📃
+# Code of Conduct 📃
 
 Please be respectful to other contributors and follow the [Code of Conduct](https://github.com/himeshparashar/Social-Morph/blob/master/CODE_OF_CONDUCT.md).
 
