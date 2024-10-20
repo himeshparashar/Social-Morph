@@ -34,10 +34,10 @@ const Footer = () => {
               <a  className = "hover:text-white text-[#E5D9F2] border-2 border-[#E5D9F2] rounded-full p-2 hover:border-[#fff]" href="https://x.com/himesh_dev" aria-label="Twitter">
                 <FaXTwitter />
               </a>
-              <a  className = "hover:text-white text-[#E5D9F2] border-2 border-[#E5D9F2] rounded-full p-2 hover:border-[#fff]" href="https://x.com/himesh_dev" aria-label="Twitter">
+              <a  className = "hover:text-white text-[#E5D9F2] border-2 border-[#E5D9F2] rounded-full p-2 hover:border-[#fff]" href="https://www.instagram.com/himeshig" aria-label="Twitter">
               <RiInstagramFill />
               </a>
-              <a  className = "hover:text-white text-[#E5D9F2] border-2 border-[#E5D9F2] rounded-full p-2 hover:border-[#fff]" href="https://x.com/himesh_dev" aria-label="Twitter">
+              <a  className = "hover:text-white text-[#E5D9F2] border-2 border-[#E5D9F2] rounded-full p-2 hover:border-[#fff]" href="https://www.instagram.com/himeshig/" aria-label="Twitter">
               <FaFacebook />
               </a>
             </div>
