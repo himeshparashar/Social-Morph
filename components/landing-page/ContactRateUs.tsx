@@ -19,8 +19,6 @@ export default function ContactRateUs() {
         setRating(value);
     };
 
-    console.log("ContactRateUs component loaded");
-
     return (
         <div className="w-[90%] lg:w-[60%] mx-auto mt-18 mb-24">
             <div className="flex lg:justify-between lg:items-center flex-wrap justify-center items-center">
