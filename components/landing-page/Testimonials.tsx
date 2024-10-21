@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaStar } from "react-icons/fa";
+import CountUp from "react-countup";
 
 const Testimonials = () => {
   const settings = {
@@ -27,7 +28,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="relative pt-28 bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(229,204,255,0.2)_100%)] overflow-hidden">
+    <div className="relative bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(229,204,255,0.2)_100%)] overflow-hidden">
       <div className="relative z-10 container mx-auto px-4">
         <h1 className="text-3xl lg:text-5xl md:w-3/6 ml-20 leading-tight gradient-text">
           Trusted to publish 200k posts across 12k channels
@@ -36,7 +37,14 @@ const Testimonials = () => {
           {TESTIMONIALS_INFO_CONTENT.map((info, index) => (
             <div key={index} className="border-l-4 border-gray-300 pl-7">
               <h1 className="text-4xl md:text-8xl purple-gradient">
-                {info.title}
+                <CountUp
+                  start={0}
+                  prefix={info.prefix || ""}
+                  end={info.title}
+                  duration={5} // Duration for the animation
+                  suffix={info.suffix || ""}
+                  decimals={info.title % 1 !== 0 ? 1 : 0} // Set decimals for values with fractions
+                />
               </h1>
               <p className="text-sm md:text-xl gradient-text">
                 {info.description}
@@ -45,6 +53,8 @@ const Testimonials = () => {
           ))}
         </div>
       </div>
+
+      {/* Testimonials Slider */}
       <div className="relative z-10 my-12 container mx-auto px-4 w-[90%]">
         <Slider {...settings}>
           {TESTIMONIALS.map((testis, index) => (
