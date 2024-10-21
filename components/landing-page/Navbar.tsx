@@ -7,7 +7,8 @@ import { RxCross1 } from "react-icons/rx";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-        
+
+
 const Navbar = () => {
   const [showFeatures, setShowFeatures] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
