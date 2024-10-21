@@ -41,7 +41,7 @@ const Signin = () => {
         }
     };
     return (
-        <div className="w-full h-screen bg-[url('https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover flex items-center justify-center">
+        <div className="w-full flex items-center justify-center">
             <div className="flex flex-col justify-center">
                 <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
                     <Heading label={"Sign In"} />
@@ -58,7 +58,7 @@ const Signin = () => {
                         type="password"
                     />
                     <div className="pt-4">
-                        <button onClick={handleSignIn} className="bg-slate-700 hover:bg-slate-800 text-white px-4 py-2 rounded mt-4" type="submit">Submit</button>
+                        <button onClick={handleSignIn} className="bg-gradient-to-r from-purple-400 to-purple-900 text-white px-4 py-2 rounded mt-4" type="submit">Submit</button>
                     </div>
                     <ButtonWarning
                         label={"Don't have an account?"}

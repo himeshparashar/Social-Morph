@@ -46,7 +46,7 @@ const Signup = () => {
 
 
 
-    return (<div className="w-full h-screen bg-[url('https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover flex items-center justify-center">
+    return (<div className="w-full h-screen  py-12 flex items-center justify-center">
         <div className="flex flex-col justify-center">
             <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
                 {step === 1 && (
@@ -74,7 +74,8 @@ const Signup = () => {
                             </label>
                         </div>
 
-                        <button className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 rounded" onClick={handleNextStep}>Next</button>
+                        {/* <button className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 rounded" onClick={handleNextStep}>Next</button> */}
+                        <button className="bg-gradient-to-r from-purple-400 to-purple-900  text-white px-6 py-2 rounded" onClick={handleNextStep}>Next</button>
                         <ButtonWarning label="Already have an account" buttonText="Sign In" to="/sign-in" />
                     </div>
                 )}
@@ -85,7 +86,8 @@ const Signup = () => {
                         <InputBox label="Username" placeholder="username" onChange={handleChange} />
                         <InputBox label="Password" placeholder="password" onChange={handleChange} type="password" />
                         <button onClick={handlePrevStep} className="bg-gray-200 hover:bg-gray-300 text-black px-4 py-2 rounded mr-4 mt-4">Previous</button>
-                        <button className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 rounded mt-4" onClick={handleNextStep}>Next</button>
+                        {/* <button className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 rounded mt-4" onClick={handleNextStep}>Next</button> */}
+                        <button className="bg-gradient-to-r from-purple-400 to-purple-900 text-white px-6 py-2 rounded mt-4" onClick={handleNextStep}>Next</button>
                         <ButtonWarning label="Already have an account" buttonText="Sign In" to="/sign-in" />
 
                     </div>
@@ -100,7 +102,8 @@ const Signup = () => {
                             <InputBox label="Enter Otp" placeholder="your otp" onChange={handleChange} />
 
                             <button onClick={handlePrevStep} className="bg-gray-200 hover:bg-gray-300 text-black px-4 py-2 rounded mr-4 mt-4">Previous</button>
-                            <button className="bg-slate-700 hover:bg-slate-800 text-white px-4 py-2 rounded mt-4" type="submit">Submit</button>
+                            {/* <button className="bg-slate-700 hover:bg-slate-800 text-white px-4 py-2 rounded mt-4" type="submit">Submit</button> */}
+                            <button className="bg-gradient-to-r from-purple-400 to-purple-900 text-white px-4 py-2 rounded mt-4" type="submit">Submit</button>
                             <ButtonWarning label="Already have an account" buttonText="Sign In" to="/sign-in" />
                         </div>
                     </form>
