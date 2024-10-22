@@ -1,5 +1,6 @@
 "use client";
 
+import ReactMarkdown from "react-markdown";
 import React, { useState, useEffect } from "react";
 import { useUser, useClerk } from "@clerk/nextjs";
 import {
@@ -17,6 +18,15 @@ import {
   X,
 } from "lucide-react";
 import Image from "next/image";
+
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+if (!apiKey) {
+  console.error("NEXT_PUBLIC_GEMINI_API_KEY is not set in the environment variables.");
+}
+const genAI = new GoogleGenerativeAI(apiKey || '');
+
 
 const HelpIcon = () => (
   <svg
@@ -43,29 +53,77 @@ const NotificationIcon = () => (
 );
 
 export default function Dashboard() {
-  const { isLoaded, isSignedIn, user } = useUser();
-  const { signOut } = useClerk();
-  const [isMinimized, setIsMinimized] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      setIsMinimized(window.innerWidth < 1024);
+    const { isLoaded, isSignedIn, user } = useUser();
+    const { signOut } = useClerk();
+    const [isMinimized, setIsMinimized] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [inputText, setInputText] = useState("");
+    const [generatedContent, setGeneratedContent] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+  
+    // Static custom prompt
+    const customPrompt = "Generate a social media post about";
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+        setIsMinimized(window.innerWidth < 1024);
+      };
+  
+      handleResize();
+      window.addEventListener("resize", handleResize);
+  
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+  
+    if (!isLoaded) return <div>Loading...</div>;
+    if (!isSignedIn) return <div>Not signed in</div>;
+  
+    const toggleSidebar = () => {
+      setIsMinimized(!isMinimized);
     };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  if (!isLoaded) return <div>Loading...</div>;
-  if (!isSignedIn) return <div>Not signed in</div>;
-
-  const toggleSidebar = () => {
-    setIsMinimized(!isMinimized);
-  };
+  
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputText(e.target.value);
+    };
+  
+    const generateContent = async () => {
+      if (!inputText.trim()) return;
+  
+      setIsLoading(true);
+      setError(null);
+      setGeneratedContent("");
+  
+      try {
+        if (!apiKey) {
+          throw new Error("Gemini API key is not set. Please check your environment variables.");
+        }
+  
+        // Combine the static prompt with user input
+        const fullPrompt = `${customPrompt} ${inputText}`;
+  
+        console.log("Generating content with prompt:", fullPrompt);
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  
+        console.log("Generating content...");
+        const result = await model.generateContent(fullPrompt);
+  
+        console.log("Processing response...");
+        const response = await result.response;
+        const text = await response.text();
+  
+        console.log("Content generated successfully");
+        setGeneratedContent(text);
+      } catch (error) {
+        console.error("Error generating content:", error);
+        setError(
+          error instanceof Error ? error.message : "An error occurred while generating content. Please try again."
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden"
@@ -204,12 +262,37 @@ export default function Dashboard() {
             <div className="relative">
               <input
                 type="text"
-                placeholder="type here to generate content for your website"
-                className="w-full px-4 py-3 border border-gray-300 focus:border-purple-500 focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-lg text-lg"
+                placeholder="Type here to generate content for your post"
+                className="w-full px-4 py-3 border border-gray-300 focus:border-[#401B80] focus:ring focus:ring-purple-200 focus:ring-opacity-50 rounded-lg text-lg"
+                value={inputText}
+                onChange={handleInputChange}
               />
-              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400" />
+              <button
+                onClick={generateContent}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white bg-purple-600 px-4 py-2 rounded-md hover:bg-purple-700 transition-colors duration-200"
+                disabled={isLoading}
+              >
+                {isLoading ? 'Generating...' : 'Generate'}
+              </button>
             </div>
           </div>
+
+          {/* Generated Content Box */}
+          {(isLoading || generatedContent || error) && (
+            <div className="mb-8 p-6 bg-white border-none shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg">
+              {isLoading ? (
+                <div className="flex items-center justify-center h-32">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#401B80]"></div>
+                </div>
+              ) : error ? (
+                <p className="text-red-600">{error}</p>
+              ) : (
+                <ReactMarkdown className="text-gray-600 whitespace-pre-wrap">
+                  {generatedContent}
+                </ReactMarkdown>
+              )}
+            </div>
+          )}
 
           {/* Main Content Sections */}
           <div className="space-y-6">
