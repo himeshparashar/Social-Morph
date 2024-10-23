@@ -87,7 +87,7 @@ const Navbar = ({blog}: {blog?:boolean}) => {
 
           <div className="max-md:hidden">
             {
-              blog && user ? 
+              (blog && user) ? 
               <UpdateCard create={true} /> :
               <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
                 Get Started

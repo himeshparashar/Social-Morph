@@ -29,7 +29,6 @@ const UpdateCard = ({title, body, id, create}: {title?: String, body?: String, i
             body: JSON.stringify(data)
         });
         const res = await response.json()
-        console.log(res);
         
 
         setHidden(!hidden);

@@ -7,7 +7,7 @@ import { useUser } from '@clerk/nextjs'
 const BlogCard = ({title, body, id, ownerId}: {title: String, body: String, id: String, ownerId:String}) => {
     const {update, setUpdate} = useBlog()
     const { user } = useUser()
-    console.log(user)
+    console.log(user?.id)
     const del= async ()=>{
         const data = {
             id: user?.id,
@@ -23,12 +23,11 @@ const BlogCard = ({title, body, id, ownerId}: {title: String, body: String, id: 
             body: JSON.stringify(data)
         })
 
-        console.log(res)
         setUpdate(!update)
     }
   return (
     <>
-        <div className="max-w-lg min-w-[250px] md:min-w-[300px] mx-auto">
+        <div className="max-w-lg min-w-[250px] md:min-w-[300px]">
             <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
                 <a href="#">
                     <img className="rounded-t-lg p-5" src="https://picsum.photos/400/200" alt="" />
@@ -42,12 +41,15 @@ const BlogCard = ({title, body, id, ownerId}: {title: String, body: String, id: 
                             body.length > 50 ? body.substring(0,150) + "..." : body
                         }
                     </p>
-                    <div className='flex justify-between'>
-                        <UpdateCard title={title} body={body} id={id} />
-                        <button onClick={()=>del()} className='p-2 rounded-md'>
-                            <Trash2 />
-                        </button>
-                    </div>
+                    {
+                        user && (user.id == ownerId) &&
+                        <div className='flex justify-between'>
+                            <UpdateCard title={title} body={body} id={id} />
+                            <button onClick={()=>del()} className='p-2 rounded-md'>
+                                <Trash2 />
+                            </button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

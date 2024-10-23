@@ -1,4 +1,4 @@
-import dbConnect from "@/lib/dbConnect"
+import dbConnect from "@/lib/config"
 import BlogModel, { Blog } from "@/models/Blog.model";
 import UserModel from "@/models/User.model";
 

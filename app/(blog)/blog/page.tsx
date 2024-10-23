@@ -39,7 +39,7 @@ const page = () => {
     <div className="relative min-h-screen w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
       <Navbar blog={true} />
 
-      <div className="container pt-8 gap-4 flex flex-wrap justify-start h-auto">
+      <div className="w-full max-w-screen-xl mx-auto pt-8 gap-4 flex flex-wrap justify-start h-auto">
         {
           data.map((item: dataFormat, index)=> (
             <BlogCard title={item.title} body={item.content} id={item._id} ownerId={item.ownerId} />
