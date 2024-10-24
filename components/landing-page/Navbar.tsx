@@ -5,17 +5,21 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { CiMenuBurger } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 import Image from "next/image";
+import UpdateCard from "../blog/Update_Card";
 import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 
-const Navbar = () => {
+
+const Navbar = ({blog}: {blog?:boolean}) => {
   const [showFeatures, setShowFeatures] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const {user} = useUser()
 
   const toggleNavbar = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <div className="mx-4 mt-5">
+      <div className="mx-24 pt-5">
         <div className="flex justify-between items-center gap-14">
           {/* LOGO */}
           <div className="z-50">
@@ -61,17 +65,20 @@ const Navbar = () => {
                 )}
               </div>
 
-              <Link href="/pricing">
-                <h1 className="cursor-pointer hover:text-purple-600">Pricing</h1>
-              </Link>
-              <h1 className="cursor-pointer hover:text-purple-600 ml-2">Blog</h1>
+              <h1 className="cursor-pointer hover:text-purple-600">Pricing</h1>
+              <Link href="/blog" className="cursor-pointer hover:text-purple-600 ml-2">Blog</Link>
+
             </div>
           </div>
 
           <div className="max-md:hidden">
-            <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
-              Get Started
-            </button>
+            {
+              (blog && user) ? 
+              <UpdateCard create={true} /> :
+              <button className="text-lg hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-800 text-white px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-purple-900 hover:transition-all hover:duration-500 hover:shadow-lg shadow-purple-400 shadow-md hover:shadow-gray-500">
+                Get Started
+              </button>
+            }
           </div>
 
           <div className="md:hidden z-50">
