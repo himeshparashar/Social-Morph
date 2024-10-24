@@ -2,11 +2,13 @@
 import React, { useState } from 'react'
 import { useBlog } from './blog-context/BlogContext';
 import { useUser } from '@clerk/nextjs';
+import Button from './ui/Button';
+import { Input } from '../ui/input';
 
 const UpdateCard = ({title, body, id, create}: {title?: String, body?: String, id?: String, create?:boolean}) => {
     const [hidden, setHidden] = useState(true)
     const [titleVar, setTitleVar] = useState(title ? title+"" : "");
-    const [bodyVar, setBodyVar] = useState(body ? body+"" : "")
+    const [bodyVar, setBodyVar] = useState<string>(body ? body+"" : "")
     // const router = useRouter();
     const {update, setUpdate} = useBlog()
     const { user } = useUser()
@@ -92,18 +94,14 @@ const UpdateCard = ({title, body, id, create}: {title?: String, body?: String, i
                                     Content
                                 </label>
                                 <input type="text" name="content" value={bodyVar} onChange={(e)=>setBodyVar(e.target.value)} id="content" placeholder="Body" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
-                            </div>
+                            </div> 
                             <div className="flex justify-between">
                                 { 
                                     create ? <div className="flex items-start">
-                                        <button data-modal-target="authentication-modal" onClick={()=>createBlog()} className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                                            Add
-                                        </button>
+                                        <Button text={"Add"} handler={createBlog} />
                                     </div> : 
                                     <div className="flex items-start">
-                                        <button data-modal-target="authentication-modal" onClick={()=>submit()} className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                                            Update
-                                        </button>
+                                        <Button text={"Update"} handler={submit} />
                                     </div>
                                 }
                             </div>
