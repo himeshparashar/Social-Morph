@@ -1,5 +1,6 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
+import Image from "next/image"; // Import Next.js Image
 
 const Infocards = () => {
     return (
@@ -35,9 +36,11 @@ const Infocards = () => {
 
                 {/* Image Section */}
                 <div className="lg:w-1/2">
-                    <img
+                    <Image
                         src="https://minvo.pro/_next/image?url=%2Fassets%2Fimages%2Fillustrations%2FMultiBrand.png&w=640&q=75"
                         alt="info-img-1"
+                        width={640} // Add width
+                        height={400} // Add height
                         className="w-full max-w-md mx-auto"
                     />
                 </div>
@@ -45,9 +48,11 @@ const Infocards = () => {
                 {/* Second Section */}
                 <div className="container mx-auto flex lg:flex-row flex-col-reverse justify-center items-center mt-14 gap-10">
                     <div>
-                        <img
+                        <Image
                             src="https://minvo.pro/_next/image?url=%2Fassets%2Fimages%2Fillustrations%2Fai-captions-and-hashtags.png&w=640&q=75"
                             alt="info-img-2"
+                            width={640} // Add width
+                            height={400} // Add height
                             className="w-full max-w-md mx-auto"
                         />
                     </div>
