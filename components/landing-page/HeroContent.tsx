@@ -1,4 +1,5 @@
 "use client"; 
+import { z } from "zod";
 
 import React, { useEffect } from "react";
 import Link from "next/link";
@@ -16,17 +17,18 @@ const HeroContent = () => {
     setIdeabtnInput("");
   }, []);
 
-const handleGetPostsClick = () => {
-  const pattern =/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/g;
-
-  if (ideabtnInput && pattern.test(ideabtnInput)) {
-    setErrorMessage("");
-    router.push("/dashboard");
-  } else {
-    setErrorMessage("Please enter a valid URL.");
-  }
-};
-
+  const handleGetPostsClick = () => {
+    const urlSchema = z.string().url();
+  
+    try {
+      urlSchema.parse(ideabtnInput);
+      setErrorMessage("");
+      router.push("/dashboard");
+    } catch (e) {
+      setErrorMessage("Please enter a valid URL.");
+    }
+  };
+  
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       handleGetPostsClick();
