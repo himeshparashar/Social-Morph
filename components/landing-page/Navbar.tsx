@@ -1,11 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { IoMdArrowDropup } from "react-icons/io";
+import {
+  IoMdArrowDropup,
+  IoMdArrowDropdown,
+} from "react-icons/io";
 import { CiMenuBurger } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
-import Image from "next/image";
 import Link from "next/link";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const Navbar = () => {
   const [showFeatures, setShowFeatures] = useState(false);
@@ -19,13 +21,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center gap-14">
           {/* LOGO */}
           <div className="z-50">
-            {/* Changed from SVG to an image i created */}
-            <img src="latestLogo.png" alt="Logo" width="200" height="" />
+            <img src="latestLogo.png" alt="Logo" width="200" />
           </div>
-          {/* <div className="Z-50 flex items-center justify-center">
-            <Image alt="logo" src={"/log.png"} width={150} height={150}/>
-
-          </div> */}
 
           <div className="max-md:hidden">
             <div className="flex gap-12 text-lg">
@@ -36,26 +33,25 @@ const Navbar = () => {
                 onMouseLeave={() => setShowFeatures(false)}
               >
                 <div className="flex items-center gap-1 group-hover:text-purple-600">
-                  Features{" "}
-                  {!showFeatures ? (
-                    <IoMdArrowDropdown className="text-xl" />
-                  ) : (
-                    <IoMdArrowDropup className="text-xl" />
-                  )}
+                  Features
+                  {/* Up/Down icons for medium+ screens */}
+                  <span className="hidden md:block">
+                    {!showFeatures ? (
+                      <IoMdArrowDropdown className="text-xl" />
+                    ) : (
+                      <IoMdArrowDropup className="text-xl" />
+                    )}
+                  </span>
+                  
                 </div>
+
                 {/* DROPDOWN MENU */}
                 {showFeatures && (
                   <div className="absolute top-full left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-50 transition-all duration-300">
                     <ul>
-                      <li className="cursor-pointer hover:text-purple-600">
-                        Generate
-                      </li>
-                      <li className="cursor-pointer my-5 hover:text-purple-600">
-                        Schedule
-                      </li>
-                      <li className="cursor-pointer hover:text-purple-600">
-                        Design
-                      </li>
+                      <li className="cursor-pointer hover:text-purple-600">Generate</li>
+                      <li className="cursor-pointer my-5 hover:text-purple-600">Schedule</li>
+                      <li className="cursor-pointer hover:text-purple-600">Design</li>
                     </ul>
                   </div>
                 )}
@@ -88,23 +84,27 @@ const Navbar = () => {
                   onMouseEnter={() => setShowFeatures(true)}
                   onMouseLeave={() => setShowFeatures(false)}
                 >
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 relative">
                     Features{" "}
-                    {!showFeatures ? (
-                      <IoMdArrowDropdown className="text-xl" />
-                    ) : (
-                      <IoMdArrowDropup className="text-xl" />
+                    
+                    {/* Left/Right icons for small screens */}
+                    <span className="md:hidden block">
+                      {!showFeatures ? (
+                        <FaAngleRight className="text-xl" />
+                      ) : (
+                        <FaAngleLeft className="text-xl" />
+                      )}
+                    </span>
+                    {showFeatures && (
+                      <div className="absolute top-0 left-[100%] text-[1rem] w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-40 transition-all duration-300">
+                        <ul>
+                          <li className="cursor-pointer hover:text-purple-600">Generate</li>
+                          <li className="cursor-pointer hover:text-purple-600">Schedule</li>
+                          <li className="cursor-pointer hover:text-purple-600">Design</li>
+                        </ul>
+                      </div>
                     )}
                   </div>
-                  {showFeatures && (
-                    <div className="absolute top-8 left-0 w-fit bg-white py-5 px-6 rounded-xl shadow-xl shadow-purple-300 z-40 transition-all duration-300">
-                      <ul>
-                        <li className="cursor-pointer">Generate</li>
-                        <li className="cursor-pointer my-5">Schedule</li>
-                        <li className="cursor-pointer">Design</li>
-                      </ul>
-                    </div>
-                  )}
                 </div>
                 <h1 className="cursor-pointer">Pricing</h1>
                 <h1 className="cursor-pointer ml-2">Blog</h1>
