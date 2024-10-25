@@ -28,7 +28,7 @@ const genAI = new GoogleGenerativeAI(apiKey || '');
 const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
   const [prompt, setPrompt] = useState("");
   const [tone, setTone] = useState<string[]>([]);
-  const [wordCount, setWordCount] = useState(1200);
+  const [wordCount, setWordCount] = useState(120);
   const [emojiLevel, setEmojiLevel] = useState("small");
   const [postsToGenerate, setPostsToGenerate] = useState(1);
   const [generatedContent, setGeneratedContent] = useState("");
