@@ -1,6 +1,7 @@
 // shared/Popup.tsx
 
 import React, { useState, useEffect } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -272,8 +273,9 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-2 bg-gray-300 rounded-md hover:bg-gray-400"
+          aria-label="Close"
         >
-          Close
+          <AiOutlineClose className="text-xl text-gray-700" /> {/* Cross icon */}
         </button>
       </div>
     </div>
