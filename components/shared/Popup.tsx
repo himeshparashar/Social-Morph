@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
+import {genAI} from "@/lib/gemini";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaPinterest, FaYoutube, FaTiktok, FaBusinessTime, FaArrowAltCircleDown, FaFileAlt, FaPen, FaExpand, FaHeart } from "react-icons/fa"; // Make sure all icons are imported correctly
@@ -15,16 +15,6 @@ interface PopupProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-// Use NEXT_PUBLIC_GEMINI_API_KEY for client-side access
-const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-
-if (!apiKey) {
-  console.error("NEXT_PUBLIC_GEMINI_API_KEY is not set in the environment variables.");
-}
-
-// Initialize the generative AI instance
-const genAI = new GoogleGenerativeAI(apiKey || '');
 
 const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
   const [prompt, setPrompt] = useState("");
@@ -83,14 +73,8 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
     setGeneratedContent("");
 
     try {
-      if (!apiKey) {
-        throw new Error("Gemini API key is not set. Please check your .env file.");
-      }
-
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
       const fullPrompt = `Generate ${postsToGenerate} posts in a ${tone.join(", ")} manner about ${prompt} in ${wordCount} words with a ${emojiLevel} emoji level.`;
-
+      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
       const result = await model.generateContent(fullPrompt);
       const text = await result.response.text();
 
