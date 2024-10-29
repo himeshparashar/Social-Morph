@@ -14,16 +14,16 @@ const Footer = () => {
           {/* Column 1 */}
           <div className="flex flex-col justify-center items-center gap-4">
            <div>
-           <div>
-            <img src="latestLogo.png" alt="Logo" width="300" height="" />
+           <div className="flex justify-center items-center">
+            <img src="latestLogo.png" alt="Logo" width="300" height=""  />
             </div>
            
-            <h1 className="text-2xl font-bold ">
-              LinkedIn content creation made easy
+            <h1 className="text-2xl font-bold items-center text-center ">
+              Social Media content creation made easy
             </h1>
             </div>
            <div className="flex flex-col gap-3 w-full md:items-center mt-3 ">
-           <div className="flex gap-3 text-2xl">
+           <div className="flex gap-3 text-2xl items-center justify-center">
 
               <a  className ="hover:text-white text-[#E5D9F2] border-2 border-[#E5D9F2] rounded-full p-2 hover:border-[#fff]"
                 href="https://www.linkedin.com/in/himeshparashar/"
@@ -41,11 +41,11 @@ const Footer = () => {
               <FaFacebook />
               </a>
             </div>
-           <div className="flex space-x-2 ">
+           <div className="flex space-x-2 text-center items-center justify-center">
          
            <p > <IoMail size={20}/></p>
 
-           <p className="hover:underline">himeshparashar424@gmail.com</p>
+           <p className="hover:underline ">himeshparashar424@gmail.com</p>
           </div>
            </div>
           </div>
