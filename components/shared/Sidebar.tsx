@@ -1,3 +1,5 @@
+// shared/Sidebar.tsx
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -15,13 +17,14 @@ import {
   LogOut,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Popup from "./Popup"; // Import Popup from shared/Popup
 
 export default function Sidebar() {
   const { signOut } = useClerk();
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const pathname = usePathname();
 
   useEffect(() => {
@@ -69,7 +72,11 @@ export default function Sidebar() {
 
         {!isMinimized && (
           <div className="mb-4 flex justify-between items-center">
-            <button className="flex items-center px-4 py-2 text-white bg-purple-800 hover:bg-purple-700 rounded-md shadow-md transition duration-200">
+            {/* Trigger modal open */}
+            <button
+              onClick={() => setIsModalOpen(true)} // Open the modal
+              className="flex items-center px-4 py-2 text-white bg-purple-800 hover:bg-purple-700 rounded-md shadow-md transition duration-200"
+            >
               <Edit3 className="h-5 w-5 mr-2" /> Create Post
             </button>
           </div>
@@ -108,26 +115,26 @@ export default function Sidebar() {
               href: "/brands",
             },
           ].map((item) => (
-            <Link href={item.href} key={item.name} passHref>
-              <button
-                className={`w-full flex items-center ${
-                  isMinimized ? "justify-center" : "px-4"
-                } py-2 ${
-                  pathname === item.href
-                    ? "text-white bg-purple-600 hover:bg-purple-700"
-                    : "text-gray-600 hover:text-purple-600 hover:bg-purple-50"
-                } rounded-lg transition-colors duration-200`}
+            <button
+              key={item.name}
+              onClick={() => (window.location.href = item.href)}
+              className={`w-full flex items-center ${
+                isMinimized ? "justify-center" : "px-4"
+              } py-2 ${
+                pathname === item.href
+                  ? "text-white bg-purple-600 hover:bg-purple-700"
+                  : "text-gray-600 hover:text-purple-600 hover:bg-purple-50"
+              } rounded-lg transition-colors duration-200`}
+            >
+              <span
+                className={`flex-shrink-0 ${
+                  isMinimized ? "mx-auto" : "mr-3"
+                }`}
               >
-                <span
-                  className={`flex-shrink-0 ${
-                    isMinimized ? "mx-auto" : "mr-3"
-                  }`}
-                >
-                  {item.icon}
-                </span>
-                {!isMinimized && <span>{item.name}</span>}
-              </button>
-            </Link>
+                {item.icon}
+              </span>
+              {!isMinimized && <span>{item.name}</span>}
+            </button>
           ))}
         </nav>
       </div>
@@ -141,6 +148,9 @@ export default function Sidebar() {
           {!isMinimized && <span>Sign out</span>}
         </button>
       </div>
+
+      {/* Render the modal */}
+      <Popup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </aside>
   );
 }
