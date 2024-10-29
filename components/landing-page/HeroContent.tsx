@@ -1,13 +1,38 @@
 "use client"; 
+import { z } from "zod";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation"; 
+
 const HeroContent = () => {
   const router = useRouter();
 
+  const [errorMessage, setErrorMessage] = React.useState("");
+
+  const [ideabtnInput, setIdeabtnInput] = React.useState("");
+  useEffect(() => {
+    // Reset the state when the component mounts
+    setErrorMessage("");
+    setIdeabtnInput("");
+  }, []);
+
   const handleGetPostsClick = () => {
-    router.push("/dashboard"); 
+    const urlSchema = z.string().url();
+  
+    try {
+      urlSchema.parse(ideabtnInput);
+      setErrorMessage("");
+      router.push("/dashboard");
+    } catch (e) {
+      setErrorMessage("Please enter a valid URL.");
+    }
+  };
+  
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleGetPostsClick();
+    }
   };
 
   return (
@@ -24,9 +49,15 @@ const HeroContent = () => {
       <div className="mt-12 sm:mt-16 md:mt-20 text-center">
         <div className="relative max-w-xl mx-auto">
           <input
+            name="ideabtn"
+            id="ideabtn"
             type="text"
             placeholder="Business Website"
             className="w-full py-3 sm:py-4 px-4 sm:px-5 pr-24 sm:pr-32 rounded-full text-base sm:text-lg shadow-lg shadow-purple-200 border-2 border-purple-100 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-300 transition-all ease-in-out duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            onKeyDown={handleKeyDown} // Added onKeyDown event handler
+            onChange={(event) => {
+              setIdeabtnInput(event.target.value);
+            }}
           />
           <button 
           onClick={handleGetPostsClick}
@@ -34,6 +65,11 @@ const HeroContent = () => {
             Get Posts
           </button>
         </div>
+        {errorMessage && (
+          <div className="mt-2 text-red-600 text-sm">
+            {errorMessage}
+          </div>
+        )}
         <div className="mt-4">
           <Link
             href="/"
