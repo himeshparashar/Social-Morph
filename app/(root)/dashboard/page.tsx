@@ -6,6 +6,8 @@ import { Plus } from "lucide-react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+
+console.log(apiKey);
 if (!apiKey) {
   console.error(
     "NEXT_PUBLIC_GEMINI_API_KEY is not set in the environment variables."
@@ -16,10 +18,12 @@ const genAI = new GoogleGenerativeAI(apiKey || "");
 export default function DashboardContent() {
   const [inputText, setInputText] = useState("");
   const [generatedContent, setGeneratedContent] = useState("");
+  const [generatedHashtags, setGeneratedHashtags] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const customPrompt = "Generate a social media post about";
+  const customPrompt =
+    "Return result using this JSON schema. Example: {content: 'just generated content about topic without hastags or anything else', hashtags: ['hashtag1', 'hashtag2', ...]}. Generate a social media post about: ";
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
@@ -31,6 +35,7 @@ export default function DashboardContent() {
     setIsLoading(true);
     setError(null);
     setGeneratedContent("");
+    setGeneratedHashtags([]);
 
     try {
       if (!apiKey) {
@@ -50,9 +55,17 @@ export default function DashboardContent() {
       console.log("Processing response...");
       const response = await result.response;
       const text = await response.text();
+      console.log(text);
+
+      const JsonResponse = text.replace(
+        /(['"])?([a-zA-Z0-9_]+)(['"])?:/g,
+        '"$2":'
+      );
+      const jsonResponse = JSON.parse(JsonResponse);
 
       console.log("Content generated successfully");
-      setGeneratedContent(text);
+      setGeneratedContent(jsonResponse.content);
+      setGeneratedHashtags(jsonResponse.hashtags);
     } catch (error) {
       console.error("Error generating content:", error);
       setError(
@@ -102,6 +115,41 @@ export default function DashboardContent() {
         </div>
       )}
 
+      <div className="bg-white border-none shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg">
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-gray-800 mb-4">
+            Trending Hashtags
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {generatedHashtags.length > 0
+              ? generatedHashtags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors duration-300 cursor-pointer"
+                  >
+                    {tag}
+                  </span>
+                ))
+              : [
+                  "#AI",
+                  "#Marketing",
+                  "#SocialMedia",
+                  "#Growth",
+                  "#Strategy",
+                  "#ContentCreation",
+                  "#DigitalMarketing",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors duration-300 cursor-pointer"
+                  >
+                    {tag}
+                  </span>
+                ))}
+          </div>
+        </div>
+      </div>
+
       <div className="space-y-6">
         <div className="bg-white border-none shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg">
           <div className="p-6">
@@ -128,32 +176,6 @@ export default function DashboardContent() {
             <button className="text-purple-600 hover:text-purple-700 font-medium flex items-center transition-colors duration-200">
               <Plus className="mr-2 h-5 w-5" /> Add New Account
             </button>
-          </div>
-        </div>
-
-        <div className="bg-white border-none shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg">
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">
-              Trending Hashtags
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "#AI",
-                "#Marketing",
-                "#SocialMedia",
-                "#Growth",
-                "#Strategy",
-                "#ContentCreation",
-                "#DigitalMarketing",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors duration-300 cursor-pointer"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </div>
