@@ -7,7 +7,6 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
-console.log(apiKey);
 if (!apiKey) {
   console.error(
     "NEXT_PUBLIC_GEMINI_API_KEY is not set in the environment variables."
@@ -40,34 +39,23 @@ export default function DashboardContent() {
     try {
       if (!apiKey) {
         throw new Error(
-          "Gemini API key is not set. Please check your environment variables."
+          "Gemini API key is not set. Please contact project support"
         );
       }
 
       const fullPrompt = `${customPrompt} ${inputText}`;
-
-      console.log("Generating content with prompt:", fullPrompt);
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-      console.log("Generating content...");
       const result = await model.generateContent(fullPrompt);
-
-      console.log("Processing response...");
       const response = await result.response;
       const text = await response.text();
-      console.log(text);
-
       const JsonResponse = text.replace(
         /(['"])?([a-zA-Z0-9_]+)(['"])?:/g,
         '"$2":'
       );
       const jsonResponse = JSON.parse(JsonResponse);
-
-      console.log("Content generated successfully");
       setGeneratedContent(jsonResponse.content);
       setGeneratedHashtags(jsonResponse.hashtags);
     } catch (error) {
-      console.error("Error generating content:", error);
       setError(
         error instanceof Error
           ? error.message
