@@ -5,11 +5,11 @@ import ReactMarkdown from "react-markdown";
 import { Plus } from "lucide-react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+const apiKey = process.env.NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY;
 
 if (!apiKey) {
   console.error(
-    "NEXT_PUBLIC_GEMINI_API_KEY is not set in the environment variables."
+    "NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY is not set in the environment variables."
   );
 }
 const genAI = new GoogleGenerativeAI(apiKey || "");
