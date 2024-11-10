@@ -19,7 +19,7 @@ const Accordion = () => {
           services
         </p>
       </div>
-      <div className="right mb-36 w-2/3 mx-auto select-none space-y-10">
+      <div className="right mb-36 w-80 lg:w-2/3 mx-auto select-none space-y-10">
         {faq.map((faq, i) => (
           <div key={i}>
             <div
